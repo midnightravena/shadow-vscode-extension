@@ -1,0 +1,194 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Shadow Script",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#objects"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#punctuation"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "name": "comment.line.h.shadowlang",
+            "match": "#(.*)"
+        },
+        "keywords": {
+            "name": "keyword.shadowlang",
+            "patterns": [
+                {
+                    "name": "keyword.control.shadowlang",
+                    "match": "\\b(if|else|while|return|break|continue|try|catch|throw|when|match|for)\\b"
+                },
+                {
+                    "name": "keyword.other.shadowlang",
+                    "match": "\\b(import|as|async|await|print|this|only)\\b"
+                },
+                {
+                    "name": "constant.language.shadowlang",
+                    "match": "\\b(true|false|null)\\b"
+                }
+            ]
+        },
+        "objects": {
+            "patterns": [
+                {
+                    "name": "support.class.shadowlang",
+                    "match": "\\b[A-Z][A-Za-z0-9_]*\\b"
+                },
+                {
+                    "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\b\\s*(\\()",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.function.shadowlang"
+                        }
+                    }
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.nullOr.shadowlang",
+                    "match": "(\\?\\?)"
+                },
+                {
+                    "name": "keyword.operator.ternary.shadowlang",
+                    "match": "(\\?|:)"
+                },
+                {
+                    "name": "keyword.operator.assignment.shadowlang",
+                    "match": "(:=|=)"
+                },
+                {
+                    "name": "keyword.operator.comparison.shadowlang",
+                    "match": "(==|!=|<=?|>=?)"
+                },
+                {
+                    "name": "keyword.operator.arithmetic.shadowlang",
+                    "match": "((\\+|-|\\*\\*?|\\/\\/?|%)=?)"
+                },
+                {
+                    "name": "keyword.operator.arithmetic.postfix.shadowlang",
+                    "match": "(\\+\\+|--)"
+                },
+                {
+                    "name": "keyword.operator.bitwise.shadowlang",
+                    "match": "(&|\\||\\^|~)"
+                },
+                {
+                    "name": "keyword.operator.logical.shadowlang",
+                    "match": "(!|&&|\\|\\|)"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.single.shadowlang",
+                    "begin": "r?'",
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "include": "#escaped_char"
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.double.shadowlang",
+                    "begin": "r?\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "include": "#escaped_char"
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.backtick.shadowlang",
+                    "begin": "r?`",
+                    "end": "`",
+                    "patterns": [
+                        {
+                            "include": "#escaped_char"
+                        }
+                    ]
+                }
+            ]
+        },
+        "escaped_char": {
+            "patterns": [
+                {
+                    "name": "constant.character.escape.shadowlang",
+                    "match": "\\\\[bfnrtv\\\\\"'`\\n]"
+                },
+                {
+                    "name": "constant.character.escape.unicode.shadowlang",
+                    "match": "\\\\u\\{[0-9A-Fa-f]+\\}"
+                },
+                {
+                    "name": "constant.character.escape.byte.shadowlang",
+                    "match": "\\\\x[0-9A-Fa-f][0-9A-Fa-f]"
+                },
+                {
+                    "name": "constant.character.escape.bslash.shadowlang",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.hexadecimal.shadowlang",
+                    "match": "\\b0[Xx][A-Fa-f0-9]+\\b"
+                },
+                {
+                    "name": "constant.numeric.exponent.shadowlang",
+                    "match": "\\b0[Ee]\\d+\\b"
+                },
+                {
+                    "name": "constant.numeric.decimal.shadowlang",
+                    "match": "\\b\\d+\\b"
+                }
+            ]
+        },
+        "punctuation": {
+            "patterns": [
+                {
+                    "name": "punctuation.comma.shadowlang",
+                    "match": ","
+                },
+                {
+                    "name": "punctuation.terminator.shadowlang",
+                    "match": ";"
+                },
+
+                {
+                    "name": "punctuation.nullAccess.shadowlang",
+                    "match": "\\?\\."
+                },
+                {
+                    "name": "punctuation.dot.shadowlang",
+                    "match": "\\."
+                }
+            ]
+        }
+    },
+    "scopeName": "source.shadowlang"
+}
