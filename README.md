@@ -10,7 +10,7 @@ Provides syntax highlighting for Shadow.
 ## Installation
 
 ```
-ext install sahilarun.shadow
+ext install sahilarun.shadowlang
 ```
 
 ## Links
