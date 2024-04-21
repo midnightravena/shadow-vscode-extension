@@ -1,0 +1,40 @@
+{
+    "name": "shadow",
+    "displayName": "Shadow",
+    "description": "Shadow Language Support",
+    "version": "0.0.1",
+    "publisher": "sahilarun",
+    "icon": "media/logo.jpeg",
+    "engines": {
+        "vscode": "^1.79.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "shadow",
+                "aliases": [
+                    "Shadow Script",
+                    "shadow"
+                ],
+                "extensions": [
+                    ".shadow"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "shadow",
+                "scopeName": "source.shadow",
+                "path": "./syntaxes/shadow.tmLanguage.json"
+            }
+        ]
+    },
+    "repository": "https://github.com/midnightravena/shadow-vscode-extension",
+    "devDependencies": {
+        "@vscode/vsce": "^2.22.0"
+    }
+}
